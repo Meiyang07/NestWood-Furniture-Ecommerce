@@ -351,7 +351,7 @@ img { max-width: 100%; display: block; }
 .auth-image-overlay p { font-size: 0.9rem; color: rgba(255,255,255,0.78); }
 .auth-image-bg {
     position: absolute; inset: 0; object-fit: cover; width: 100%; height: 100%;
-    opacity: 0.55;
+    opacity: 0.85;
 }
 .auth-image-gradient {
     position: absolute; inset: 0;
@@ -2448,10 +2448,11 @@ img { max-width: 100%; display: block; }
 
 .browse-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(280px, 1fr));
-    gap: 1.75rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
     align-items: stretch;
     width: 100%;
+    max-width: 100%;
 }
 
 .browse-card {
@@ -3802,8 +3803,11 @@ img { max-width: 100%; display: block; }
 
 /* ── Desktop (1024px+) ──────────────────────────────────────────── */
 @media (min-width: 1024px) {
-    /* Product grids: 4 columns on desktop */
-    .browse-grid,
+    /* Product grids: 3 columns for browse, 4 for product-grid on desktop */
+    .browse-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    
     .product-grid {
         grid-template-columns: repeat(4, 1fr) !important;
     }
