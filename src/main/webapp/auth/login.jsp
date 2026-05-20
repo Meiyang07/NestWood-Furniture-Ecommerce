@@ -61,7 +61,7 @@
             <div class="form-group">
                 <label for="password" style="display:flex;justify-content:space-between;align-items:center">
                     Password
-                    <a href="#" style="font-size:0.78rem;color:var(--gold);font-weight:500">Forgot password?</a>
+                    <a href="javascript:void(0)" onclick="alert('Please contact the administrator to reset your password.')" style="font-size:0.78rem;color:var(--gold);font-weight:500">Forgot password?</a>
                 </label>
                 <input type="password" id="password" name="password"
                        placeholder="Enter your password" required autocomplete="current-password">
