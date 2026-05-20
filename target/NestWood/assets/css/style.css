@@ -351,7 +351,7 @@ img { max-width: 100%; display: block; }
 .auth-image-overlay p { font-size: 0.9rem; color: rgba(255,255,255,0.78); }
 .auth-image-bg {
     position: absolute; inset: 0; object-fit: cover; width: 100%; height: 100%;
-    opacity: 0.55;
+    opacity: 0.85;
 }
 .auth-image-gradient {
     position: absolute; inset: 0;
