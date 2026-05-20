@@ -70,16 +70,16 @@ function initNav() {
     var links  = document.querySelector('.nav-links');
     if (!toggle || !links) return;
     toggle.addEventListener('click', function () {
-        links.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', links.classList.contains('open'));
+        links.classList.toggle('active');
+        toggle.setAttribute('aria-expanded', links.classList.contains('active'));
     });
     links.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () { links.classList.remove('open'); });
+        a.addEventListener('click', function () { links.classList.remove('active'); });
     });
     /* Close on outside click */
     document.addEventListener('click', function (e) {
         if (!toggle.contains(e.target) && !links.contains(e.target)) {
-            links.classList.remove('open');
+            links.classList.remove('active');
         }
     });
 }
@@ -281,41 +281,3 @@ document.addEventListener('DOMContentLoaded', function () {
     initSmoothScroll();
     initAlerts();
 });
-
-
-/* ── Mobile Navigation Toggle ──────────────────────────────────── */
-function initMobileNav() {
-    var toggle = document.querySelector('.nav-toggle');
-    var navLinks = document.querySelector('.nav-links');
-    
-    if (!toggle || !navLinks) return;
-    
-    toggle.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-        toggle.setAttribute('aria-expanded', navLinks.classList.contains('active'));
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!toggle.contains(e.target) && !navLinks.contains(e.target)) {
-            navLinks.classList.remove('active');
-            toggle.setAttribute('aria-expanded', 'false');
-        }
-    });
-    
-    // Close menu when clicking a link
-    var links = navLinks.querySelectorAll('a');
-    links.forEach(function(link) {
-        link.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-            toggle.setAttribute('aria-expanded', 'false');
-        });
-    });
-}
-
-/* Initialize mobile nav on page load */
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobileNav);
-} else {
-    initMobileNav();
-}
