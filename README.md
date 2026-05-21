@@ -49,11 +49,74 @@ NestWood is a dynamic, role-based e-commerce system that allows customers to bro
 ---
 
 ## Project Architecture
+### Backend Architecture
+src/main/java
 
-The project follows the **MVC (Model-View-Controller)** design pattern:
-- **Model:** Business logic and data objects (POJOs)
-- **View:** JSP pages (user and admin)
-- **Controller:** Servlets handling HTTP requests
+model – Contains POJO/entity classes such as User, Product, Order, Category, and DashboardStats. These classes represent the main data objects used in the system.
+
+dao – Contains database access classes such as UserDAO, ProductDAO, OrderDAO, and DashboardDAO. These classes communicate with the MySQL database and perform insert, update, delete, and retrieve operations.
+
+service – Contains business logic classes such as UserService, ProductService, and OrderService. This layer works between the controller and DAO layer. It helps keep business rules separate from direct database code.
+
+controller – Contains servlet classes that handle HTTP requests and responses. Controllers receive requests from JSP pages, call service or DAO methods, and forward users to the correct JSP page.
+
+filter – Contains authentication and role-based access filters such as AuthFilter, GuestFilter, and RoleFilter. These filters protect restricted pages and manage access based on login session and user role.
+
+util – Contains reusable helper classes such as DBConnection, SessionUtil, PasswordUtil, ValidationUtil, FileUploadUtil, and CookieUtil. These classes support database connection, session handling, password processing, validation, file upload, and cookie management.
+
+### Frontend Architecture
+src/main/webapp
+
+WEB-INF – Contains the web.xml deployment descriptor and protected configuration files.
+
+assets – Contains frontend resources such as CSS files, JavaScript files, images, and uploaded product images.
+
+admin – Contains admin-side JSP pages such as dashboard, product management, add product, order management, and user management.
+
+auth – Contains authentication pages such as login and registration.
+
+user – Contains user-side JSP pages such as profile, wishlist, my orders, and user dashboard.
+
+JSP View Pages – JSP pages are used as the View layer of the MVC architecture. These pages display dynamic data received from servlets and DAO/service classes.
+
+### Architecture Flow
+User Request
+
+↓
+
+JSP Page / Browser
+
+↓
+
+Controller Servlet
+
+↓
+
+Service Layer
+
+↓
+
+DAO Layer
+
+↓
+
+MySQL Database
+
+↓
+
+DAO Layer returns data
+
+↓
+
+Service Layer processes result
+
+↓
+
+Controller forwards response
+
+↓
+
+JSP displays output
 
 ## Database
 - **Database name:** `nestwood_db`
@@ -115,24 +178,29 @@ Password: Admin@123
 ## Folder Structure
 
 NestWood-Furniture-Ecommerce/
-│
-├── database/
-│   └── schema.sql                  → Full database schema with sample data
-│
-├── src/
-│   └── main/
-│       ├── java/                   → All Java source files
-│       └── webapp/
-│           ├── assets/
-│           │   ├── css/            → Stylesheet files
-│           │   ├── js/             → JavaScript files
-│           │   └── images/         → Static and uploaded images
-│           ├── WEB-INF/
-│           │   └── web.xml         → Deployment descriptor
-│           └── *.jsp               → All JSP view pages
-│
-├── pom.xml                         → Maven dependencies
-└── README.md
+- database/
+    - nestwood_db.sql: SQL dump file with schema and sample data
+
+- src/main/java/
+    - controller/: Servlet/controller classes
+    - dao/: Database operation classes
+    - model/: Model/entity classes
+    - util/: Utility classes
+    - filter/: Authentication and role-based access filters
+
+- src/main/webapp/
+    - admin/: Admin JSP pages
+    - auth/: Login and registration pages
+    - user/: User dashboard, profile, wishlist, and orders
+    - assets/css/: CSS files
+    - assets/js/: JavaScript files
+    - assets/images/: Static and uploaded images
+    - WEB-INF/web.xml: Deployment descriptor
+    - index.jsp: Main landing page
+
+- pom.xml: Maven dependencies and project configuration
+- README.md: Project setup and usage instructions
+- .gitignore: Files/folders ignored by Git
 
 ## Security Features
 
