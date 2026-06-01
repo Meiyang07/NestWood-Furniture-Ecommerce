@@ -183,10 +183,10 @@
 
     <%-- ── Quick Links ────────────────────────────────────────── --%>
     <div class="admin-quick-links" style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="${pageContext.request.contextPath}/admin/products?action=list" class="btn btn-primary">
+        <a href="${pageContext.request.contextPath}/admin/products?action=list" class="btn btn-gold">
             <i class="fas fa-couch" aria-hidden="true"></i> Manage Products
         </a>
-        <a href="${pageContext.request.contextPath}/order?action=adminOrders" class="btn btn-outline">
+        <a href="${pageContext.request.contextPath}/order?action=adminOrders" class="btn btn-gold">
             <i class="fas fa-box" aria-hidden="true"></i> All Orders
         </a>
         <a href="${pageContext.request.contextPath}/admin/products?action=add" class="btn btn-gold">
@@ -205,14 +205,14 @@
             <table class="data-table">
                 <thead>
                 <tr>
-                    <th>#</th><th>Customer</th><th>Product</th>
+                    <th>ID</th><th>Customer</th><th>Product</th>
                     <th>Amount</th><th>Status</th><th>Date</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach var="o" items="${recentOrders}">
                     <tr>
-                        <td class="order-id-cell">#${o.id}</td>
+                        <td class="order-id-cell">${o.id}</td>
                         <td>${o.userName}</td>
                         <td>${o.productName}</td>
                         <td class="price-cell">Rs. <fmt:formatNumber value="${o.totalPrice}" pattern="#,##0.00"/></td>

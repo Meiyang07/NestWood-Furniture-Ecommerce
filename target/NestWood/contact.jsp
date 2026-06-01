@@ -20,7 +20,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .contact-hero::before {
             content: '';
             position: absolute;
@@ -28,7 +28,7 @@
             background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, transparent 100%);
             pointer-events: none;
         }
-        
+
         .contact-hero .section-label {
             color: #FFF8E7;
             letter-spacing: 0.12em;
@@ -38,20 +38,20 @@
             position: relative;
             z-index: 1;
         }
-        
-        .contact-hero h1 { 
-            font-size: clamp(1.8rem, 4vw, 2.8rem); 
-            font-weight: 700; 
+
+        .contact-hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
             margin-bottom: 1rem;
             position: relative;
             z-index: 1;
             text-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
-        
-        .contact-hero p { 
-            color: rgba(255,255,255,0.9); 
-            max-width: 540px; 
-            margin: 0 auto; 
+
+        .contact-hero p {
+            color: rgba(255,255,255,0.9);
+            max-width: 540px;
+            margin: 0 auto;
             line-height: 1.7;
             position: relative;
             z-index: 1;
@@ -389,7 +389,7 @@
     </div>
 </footer>
 
-<script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
+
 <script>
     /* ── Client-side validation for contact form ── */
     (function () {

@@ -48,15 +48,15 @@
                 <tbody>
                 <c:forEach var="o" items="${allOrders}">
                     <tr>
-                        <td class="order-id-cell">${o.id}</td>
-                        <td><strong>${o.userName}</strong></td>
-                        <td>${o.productName}</td>
-                        <td>${o.quantity}</td>
-                        <td class="price-cell">Rs. <fmt:formatNumber value="${o.totalPrice}" pattern="#,##0.00"/></td>
-                        <td class="address-cell" title="${o.address}">${o.address}</td>
-                        <td><span class="badge badge-${o.status}">${o.status}</span></td>
-                        <td class="text-muted" style="font-size:0.82rem">${o.createdAt}</td>
-                        <td>
+                        <td class="order-id-cell" data-label="ID">${o.id}</td>
+                        <td data-label="Customer"><strong>${o.userName}</strong></td>
+                        <td data-label="Product">${o.productName}</td>
+                        <td data-label="Qty">${o.quantity}</td>
+                        <td class="price-cell" data-label="Total">Rs. <fmt:formatNumber value="${o.totalPrice}" pattern="#,##0.00"/></td>
+                        <td class="address-cell" data-label="Address" title="${o.address}">${o.address}</td>
+                        <td data-label="Status"><span class="badge badge-${o.status}">${o.status}</span></td>
+                        <td class="text-muted" data-label="Date" style="font-size:0.82rem">${o.createdAt}</td>
+                        <td data-label="Action">
                             <form action="${pageContext.request.contextPath}/order"
                                   method="get" class="inline-status-form">
                                 <input type="hidden" name="action" value="updateStatus">

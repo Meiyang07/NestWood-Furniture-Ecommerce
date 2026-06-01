@@ -21,7 +21,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .about-hero::before {
             content: '';
             position: absolute;
@@ -29,7 +29,7 @@
             background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, transparent 100%);
             pointer-events: none;
         }
-        
+
         .about-hero .section-label {
             color: #FFF8E7;
             letter-spacing: 0.12em;
@@ -39,7 +39,7 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .about-hero h1 {
             font-size: clamp(2rem, 5vw, 3.2rem);
             font-weight: 700;
@@ -48,7 +48,7 @@
             z-index: 1;
             text-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
-        
+
         .about-hero p {
             max-width: 600px;
             margin: 0 auto;
@@ -162,7 +162,7 @@
             margin-bottom: 0.5rem;
         }
         .team-section .sub { color: #888; margin-bottom: 3rem; }
-        
+
         /* Team Grid */
         .team-grid {
             display: grid;
@@ -171,7 +171,7 @@
             max-width: 1600px;
             margin: 0 auto;
         }
-        
+
         .team-card {
             background: #fff;
             border-radius: 16px;
@@ -180,12 +180,12 @@
             box-shadow: 0 4px 16px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-        
+
         .team-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 16px 32px rgba(0,0,0,0.18);
         }
-        
+
         .team-avatar {
             width: 100%;
             height: 280px;
@@ -196,51 +196,51 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .team-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .team-info {
             padding: 2rem 1.5rem;
             text-align: center;
         }
-        
-        .team-card h4 { 
-            font-weight: 600; 
-            color: #1a1a2e; 
+
+        .team-card h4 {
+            font-weight: 600;
+            color: #1a1a2e;
             margin-bottom: 0.5rem;
             font-size: 1.2rem;
         }
-        
-        .team-card .role { 
-            color: #c8a96e; 
+
+        .team-card .role {
+            color: #c8a96e;
             font-size: 0.95rem;
             font-weight: 600;
             display: block;
             margin-bottom: 1rem;
         }
-        
+
         .team-card .description {
             color: #666;
             font-size: 0.92rem;
             line-height: 1.6;
         }
-        
+
         @media (max-width: 1024px) {
             .team-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-        
+
         @media (max-width: 768px) {
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-        
+
         @media (max-width: 480px) {
             .team-grid {
                 grid-template-columns: 1fr;
@@ -356,11 +356,11 @@
 <section class="team-section">
     <h2>Meet the Team</h2>
     <p class="sub">The people behind your perfect living space.</p>
-    
+
     <div class="team-grid">
         <div class="team-card">
             <div class="team-avatar">
-                <img src="${pageContext.request.contextPath}/assets/images/team/mayank.jpg?v=2" 
+                <img src="${pageContext.request.contextPath}/assets/images/team/mayank.jpg?v=2"
                      alt="Mayank Gurung"
                      onerror="this.src='https://ui-avatars.com/api/?name=Mayank+Gurung&size=400&background=c8a96e&color=fff&bold=true'">
             </div>
@@ -372,7 +372,7 @@
         </div>
         <div class="team-card">
             <div class="team-avatar">
-                <img src="${pageContext.request.contextPath}/assets/images/team/krish.jpg?v=2" 
+                <img src="${pageContext.request.contextPath}/assets/images/team/krish.jpg?v=2"
                      alt="Krish Shahi"
                      onerror="this.src='https://ui-avatars.com/api/?name=Krish+Shahi&size=400&background=a07840&color=fff&bold=true'">
             </div>
@@ -384,7 +384,7 @@
         </div>
         <div class="team-card">
             <div class="team-avatar">
-                <img src="${pageContext.request.contextPath}/assets/images/team/abinash.jpg?v=2" 
+                <img src="${pageContext.request.contextPath}/assets/images/team/abinash.jpg?v=2"
                      alt="Abinash Lamgade"
                      onerror="this.src='https://ui-avatars.com/api/?name=Abinash+Lamgade&size=400&background=8A6840&color=fff&bold=true'">
             </div>
@@ -396,7 +396,7 @@
         </div>
         <div class="team-card">
             <div class="team-avatar">
-                <img src="${pageContext.request.contextPath}/assets/images/team/sarthak.jpg?v=2" 
+                <img src="${pageContext.request.contextPath}/assets/images/team/sarthak.jpg?v=2"
                      alt="Sarthak Ghimire"
                      onerror="this.src='https://ui-avatars.com/api/?name=Sarthak+Ghimire&size=400&background=B8933A&color=fff&bold=true'">
             </div>
@@ -408,7 +408,7 @@
         </div>
         <div class="team-card">
             <div class="team-avatar">
-                <img src="${pageContext.request.contextPath}/assets/images/team/madan.jpg?v=2" 
+                <img src="${pageContext.request.contextPath}/assets/images/team/madan.jpg?v=2"
                      alt="Madan Sapkota"
                      onerror="this.src='https://ui-avatars.com/api/?name=Madan+Sapkota&size=400&background=D4AF70&color=fff&bold=true'">
             </div>
@@ -429,6 +429,6 @@
     <a href="${pageContext.request.contextPath}/contact" class="btn-outline-white">Get in Touch</a>
 </section>
 
-<script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
+
 </body>
 </html>

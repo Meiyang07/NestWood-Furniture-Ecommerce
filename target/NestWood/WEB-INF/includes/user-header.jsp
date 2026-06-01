@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%--
   user-header.jsp — NestWood User Navigation
-  Redesigned: Banani UserDashboard nav prototype.
+  Responsive: hamburger wired, nav-right hidden on mobile, mobile user info in nav-links.
   All href paths, session attributes (userName, userId, userRole) UNCHANGED.
   Active-link detection via requestURI UNCHANGED.
 --%>
@@ -13,7 +13,7 @@
         Nest<span>Wood</span>
     </a>
 
-    <!-- Center links (desktop) -->
+    <!-- Center links (desktop only — hidden below 767px via CSS) -->
     <div class="nav-center">
         <a href="${pageContext.request.contextPath}/user/dashboard"
            class="${pageContext.request.requestURI.contains('dashboard') ? 'nav-active' : ''}">
@@ -45,59 +45,81 @@
         </a>
     </div>
 
-    <!-- Mobile toggle -->
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-    </button>
-
-    <!-- Right: user dropdown + logout (desktop) -->
+    <!-- Right: user dropdown (desktop) + hamburger (mobile) -->
     <div class="nav-right">
-        <c:choose>
-            <c:when test="${not empty sessionScope.loggedUser}">
-                <!-- User dropdown -->
-                <div class="nav-user-dropdown">
-                    <a href="${pageContext.request.contextPath}/user/profile" class="nav-user" aria-label="Go to profile">
-                        <c:choose>
-                            <c:when test="${not empty sessionScope.userAvatar && sessionScope.userAvatar != 'default.png'}">
-                                <img src="${pageContext.request.contextPath}/assets/images/uploads/${sessionScope.userAvatar}" 
-                                     alt="${sessionScope.userName}" class="nav-avatar" />
-                            </c:when>
-                            <c:otherwise>
-                                <div class="nav-avatar" style="background: linear-gradient(135deg, #c8a96e 0%, #d4b87a 100%); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">
-                                    ${sessionScope.userName.substring(0, 1).toUpperCase()}
-                                </div>
-                            </c:otherwise>
-                        </c:choose>
-                        <span>${sessionScope.userName}</span>
-                    </a>
-                    
-                    <!-- Dropdown menu -->
-                    <div class="nav-dropdown-menu">
-                        <a href="${pageContext.request.contextPath}/wishlist" class="nav-dropdown-item">
-                            <i class="fas fa-heart" aria-hidden="true"></i> Wishlist
+
+        <!-- User dropdown / guest — visible on desktop, hidden on mobile -->
+        <div class="nav-right-desktop">
+            <c:choose>
+                <c:when test="${not empty sessionScope.loggedUser}">
+                    <div class="nav-user-dropdown">
+                        <a href="${pageContext.request.contextPath}/user/profile" class="nav-user" aria-label="Go to profile">
+                            <c:choose>
+                                <c:when test="${not empty sessionScope.userAvatar && sessionScope.userAvatar != 'default.png'}">
+                                    <img src="${pageContext.request.contextPath}/assets/images/uploads/${sessionScope.userAvatar}"
+                                         alt="${sessionScope.userName}" class="nav-avatar" />
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="nav-avatar nav-avatar--initials">
+                                            ${sessionScope.userName.substring(0, 1).toUpperCase()}
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>
+                            <span>${sessionScope.userName}</span>
                         </a>
-                        <div class="nav-dropdown-divider"></div>
-                        <a href="${pageContext.request.contextPath}/logout" class="nav-dropdown-item nav-dropdown-item-danger">
-                            <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout
-                        </a>
+                        <div class="nav-dropdown-menu">
+                            <a href="${pageContext.request.contextPath}/wishlist" class="nav-dropdown-item">
+                                <i class="fas fa-heart" aria-hidden="true"></i> Wishlist
+                            </a>
+                            <div class="nav-dropdown-divider"></div>
+                            <a href="${pageContext.request.contextPath}/logout" class="nav-dropdown-item nav-dropdown-item-danger">
+                                <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </c:when>
-            <c:otherwise>
-                <!-- Guest section -->
-                <div class="nav-guest-section">
-                    <div class="nav-guest-icon" style="background: linear-gradient(135deg, #c8a96e 0%, #d4b87a 100%); color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">
-                        G
+                </c:when>
+                <c:otherwise>
+                    <div class="nav-guest-section">
+                        <div class="nav-guest-icon">G</div>
+                        <span class="nav-guest-label">Guest</span>
+                        <a href="${pageContext.request.contextPath}/login" class="btn btn-gold btn-sm">Sign In</a>
                     </div>
-                    <span style="color: var(--text-mid); font-weight: 500; margin-right: 0.75rem;">Guest</span>
-                    <a href="${pageContext.request.contextPath}/login" class="btn btn-gold btn-sm">Sign In</a>
-                </div>
-            </c:otherwise>
-        </c:choose>
+                </c:otherwise>
+            </c:choose>
+        </div>
+
+        <!-- Hamburger — visible only on mobile -->
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
     </div>
 
-    <!-- Mobile nav links (hidden until toggle) -->
-    <ul class="nav-links">
+    <!-- Mobile nav drawer (slides in from left on mobile) -->
+    <ul class="nav-links" role="menu">
+
+        <%-- Mobile user greeting at top of drawer --%>
+        <c:if test="${not empty sessionScope.loggedUser}">
+            <li class="nav-links-user-info">
+                <c:choose>
+                    <c:when test="${not empty sessionScope.userAvatar && sessionScope.userAvatar != 'default.png'}">
+                        <img src="${pageContext.request.contextPath}/assets/images/uploads/${sessionScope.userAvatar}"
+                             alt="${sessionScope.userName}" class="nav-links-avatar" />
+                    </c:when>
+                    <c:otherwise>
+                        <div class="nav-links-avatar nav-avatar--initials">
+                                ${sessionScope.userName.substring(0, 1).toUpperCase()}
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+                <div>
+                    <strong>${sessionScope.userName}</strong>
+                    <span>My Account</span>
+                </div>
+            </li>
+            <li class="nav-links-divider"></li>
+        </c:if>
+
         <li>
             <a href="${pageContext.request.contextPath}/user/dashboard"
                class="${pageContext.request.requestURI.contains('dashboard') ? 'nav-active' : ''}">
@@ -140,18 +162,26 @@
                 <i class="fas fa-user" aria-hidden="true"></i> Profile
             </a>
         </li>
+
+        <li class="nav-links-divider"></li>
+
         <c:choose>
             <c:when test="${not empty sessionScope.loggedUser}">
                 <li>
-                    <a href="${pageContext.request.contextPath}/logout" class="nav-cta">Logout</a>
+                    <a href="${pageContext.request.contextPath}/logout" class="nav-cta">
+                        <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout
+                    </a>
                 </li>
             </c:when>
             <c:otherwise>
                 <li>
-                    <a href="${pageContext.request.contextPath}/login" class="nav-cta">Sign In</a>
+                    <a href="${pageContext.request.contextPath}/login" class="nav-cta">
+                        <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Sign In
+                    </a>
                 </li>
             </c:otherwise>
         </c:choose>
+
     </ul>
 
 </nav>

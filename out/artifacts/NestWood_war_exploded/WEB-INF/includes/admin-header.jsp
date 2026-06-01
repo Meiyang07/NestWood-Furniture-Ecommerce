@@ -93,6 +93,70 @@
 <!-- ── Admin Topbar ────────────────────────────────────────────── -->
 <nav class="admin-topbar">
 
+    <!-- Mobile menu toggle button -->
+    <button class="admin-menu-toggle" id="adminMenuToggle" aria-label="Toggle admin menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Mobile navigation dropdown -->
+    <div class="admin-mobile-nav" id="adminMobileNav">
+        <ul class="admin-mobile-menu">
+            <li>
+                <a href="${pageContext.request.contextPath}/admin/dashboard"
+                   class="${pageContext.request.requestURI.contains('dashboard') ? 'active' : ''}">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/admin/products?action=list"
+                   class="${pageContext.request.requestURI.contains('product') && !pageContext.request.requestURI.contains('product-add') ? 'active' : ''}">
+                    <i class="fas fa-couch"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/admin/products?action=add"
+                   class="${pageContext.request.requestURI.contains('product-add') ? 'active' : ''}">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Product</span>
+                </a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/order?action=adminOrders"
+                   class="${pageContext.request.requestURI.contains('order') ? 'active' : ''}">
+                    <i class="fas fa-box"></i>
+                    <span>Orders</span>
+                    <c:if test="${not empty sessionScope.pendingOrderCount && sessionScope.pendingOrderCount > 0}">
+                        <span class="mobile-nav-badge">${sessionScope.pendingOrderCount}</span>
+                    </c:if>
+                </a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/admin/users"
+                   class="${pageContext.request.requestURI.contains('user') ? 'active' : ''}">
+                    <i class="fas fa-users"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li class="admin-mobile-divider"></li>
+            <li>
+                <a href="${pageContext.request.contextPath}/user/profile">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/logout" class="logout-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
     <div class="topbar-title">
         <h1>Dashboard Overview</h1>
         <p>Welcome back, <strong>${sessionScope.userName}</strong></p>

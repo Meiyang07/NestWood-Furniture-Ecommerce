@@ -56,7 +56,7 @@ public class DashboardDAO {
             FROM orders o
             JOIN users u    ON o.user_id    = u.id
             JOIN products p ON o.product_id = p.id
-            ORDER BY o.created_at DESC
+            ORDER BY o.created_at ASC
             LIMIT 5
             """;
         try (Connection conn = DBConnection.getConnection();

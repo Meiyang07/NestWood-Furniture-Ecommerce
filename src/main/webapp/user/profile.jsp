@@ -56,19 +56,19 @@
 
             <div class="profile-nav-links" style="padding: 0 1rem 1.5rem;">
                 <a href="${pageContext.request.contextPath}/order?action=history" class="profile-nav-link" style="background: #fff; border: 1px solid #e8dcc8; border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 0.5rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.75rem;">
-                    <i class="fas fa-box" aria-hidden="true" style="color: #C8A96E; font-size: 1.1rem;"></i> 
+                    <i class="fas fa-box" aria-hidden="true" style="color: #C8A96E; font-size: 1.1rem;"></i>
                     <span style="color: #5A4A3A; font-weight: 500;">My Orders</span>
                 </a>
                 <a href="${pageContext.request.contextPath}/wishlist" class="profile-nav-link" style="background: #fff; border: 1px solid #e8dcc8; border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 0.5rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.75rem;">
-                    <i class="fas fa-heart" aria-hidden="true" style="color: #C8A96E; font-size: 1.1rem;"></i> 
+                    <i class="fas fa-heart" aria-hidden="true" style="color: #C8A96E; font-size: 1.1rem;"></i>
                     <span style="color: #5A4A3A; font-weight: 500;">My Wishlist</span>
                 </a>
                 <a href="${pageContext.request.contextPath}/user/browse" class="profile-nav-link" style="background: #fff; border: 1px solid #e8dcc8; border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 0.5rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.75rem;">
-                    <i class="fas fa-couch" aria-hidden="true" style="color: #C8A96E; font-size: 1.1rem;"></i> 
+                    <i class="fas fa-couch" aria-hidden="true" style="color: #C8A96E; font-size: 1.1rem;"></i>
                     <span style="color: #5A4A3A; font-weight: 500;">Browse Furniture</span>
                 </a>
                 <a href="${pageContext.request.contextPath}/logout" class="profile-nav-link profile-nav-link--danger" style="background: #fff; border: 1px solid #ffcdd2; border-radius: 8px; padding: 0.85rem 1rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.75rem;">
-                    <i class="fas fa-door-open" aria-hidden="true" style="color: #e53935; font-size: 1.1rem;"></i> 
+                    <i class="fas fa-door-open" aria-hidden="true" style="color: #e53935; font-size: 1.1rem;"></i>
                     <span style="color: #e53935; font-weight: 500;">Logout</span>
                 </a>
             </div>
@@ -239,7 +239,7 @@
     </div>
 </footer>
 
-<script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
+
 <style>
     /* Profile page hover effects */
     .profile-nav-link:hover {
@@ -247,28 +247,28 @@
         box-shadow: 0 4px 12px rgba(200, 169, 110, 0.2) !important;
         border-color: #c8a96e !important;
     }
-    
+
     .profile-nav-link--danger:hover {
         transform: translateX(5px);
         box-shadow: 0 4px 12px rgba(229, 57, 53, 0.2) !important;
         border-color: #e53935 !important;
     }
-    
+
     .file-upload-wrap:hover {
         border-color: #d4b87a;
         background: linear-gradient(135deg, #fff 0%, #fdfbf7 100%);
     }
-    
+
     .file-upload-label:hover > div {
         transform: translateY(-2px);
         box-shadow: 0 6px 16px rgba(200, 169, 110, 0.4);
     }
-    
+
     .btn-primary:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(200, 169, 110, 0.4) !important;
     }
-    
+
     .btn-warning:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4) !important;

@@ -183,10 +183,10 @@
 
     <%-- ── Quick Links ────────────────────────────────────────── --%>
     <div class="admin-quick-links" style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="${pageContext.request.contextPath}/admin/products?action=list" class="btn btn-primary">
+        <a href="${pageContext.request.contextPath}/admin/products?action=list" class="btn btn-gold">
             <i class="fas fa-couch" aria-hidden="true"></i> Manage Products
         </a>
-        <a href="${pageContext.request.contextPath}/order?action=adminOrders" class="btn btn-outline">
+        <a href="${pageContext.request.contextPath}/order?action=adminOrders" class="btn btn-gold">
             <i class="fas fa-box" aria-hidden="true"></i> All Orders
         </a>
         <a href="${pageContext.request.contextPath}/admin/products?action=add" class="btn btn-gold">
@@ -205,14 +205,14 @@
             <table class="data-table">
                 <thead>
                 <tr>
-                    <th>#</th><th>Customer</th><th>Product</th>
+                    <th>ID</th><th>Customer</th><th>Product</th>
                     <th>Amount</th><th>Status</th><th>Date</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach var="o" items="${recentOrders}">
                     <tr>
-                        <td class="order-id-cell">#${o.id}</td>
+                        <td class="order-id-cell">${o.id}</td>
                         <td>${o.userName}</td>
                         <td>${o.productName}</td>
                         <td class="price-cell">Rs. <fmt:formatNumber value="${o.totalPrice}" pattern="#,##0.00"/></td>
@@ -463,7 +463,8 @@
             var c = document.getElementById('catChart'); if (!c) return;
             var ctx = c.getContext('2d');
             var W = c.width, H = c.height;
-            var P = { t:36, r:20, b:76, l:50 };
+            var isMobile = window.innerWidth < 900;
+            var P = { t:36, r:20, b: 76, l:50 };
             var cW = W-P.l-P.r, cH = H-P.t-P.b;
             var lbs = D.cat.labels, vs = D.cat.values;
             var col = c.parentElement;
@@ -526,9 +527,20 @@
                         ctx.fillText(vs[i], x+bW/2, y-8);
                     }
 
-                    /* x-axis label straight (horizontal) */
-                    ctx.fillStyle = TEXT; ctx.font = '10.5px system-ui,sans-serif'; ctx.textAlign = 'center';
-                    ctx.fillText(lbl, x+bW/2, P.t+cH+20);
+                    /* x-axis label - smaller font on mobile to prevent overlap */
+                    ctx.fillStyle = TEXT; 
+                    var isMobile = window.innerWidth < 900;
+                    if (isMobile) {
+                        ctx.font = '8px system-ui,sans-serif'; // Smaller font on mobile
+                        ctx.textAlign = 'center';
+                        // Truncate long labels on mobile
+                        var displayLabel = lbl.length > 8 ? lbl.substring(0, 7) + '...' : lbl;
+                        ctx.fillText(displayLabel, x+bW/2, P.t+cH+20);
+                    } else {
+                        ctx.font = '10.5px system-ui,sans-serif';
+                        ctx.textAlign = 'center';
+                        ctx.fillText(lbl, x+bW/2, P.t+cH+20);
+                    }
 
                     /* hit zone (full height for hover) */
                     hitData[0][i] = {

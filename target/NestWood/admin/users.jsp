@@ -167,10 +167,10 @@
                                             <c:when test="${not empty user.avatar && user.avatar != 'default.png'}">
                                                 <img src="${pageContext.request.contextPath}/assets/images/uploads/${user.avatar}" 
                                                      alt="${user.fullName}" 
-                                                     style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--border);" />
+                                                     style="width:40px;height:40px;min-width:40px;min-height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;" />
                                             </c:when>
                                             <c:otherwise>
-                                                <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);color:white;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:600;box-shadow: 0 2px 8px rgba(212,175,55,0.3);">
+                                                <div style="width:40px;height:40px;min-width:40px;min-height:40px;border-radius:50%;background:linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);color:white;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:600;box-shadow: 0 2px 8px rgba(212,175,55,0.3);flex-shrink:0;">
                                                     ${user.fullName.substring(0,1).toUpperCase()}
                                                 </div>
                                             </c:otherwise>
